@@ -1,28 +1,77 @@
+body {
+	color: #333;
+}
+h1 {
+	margin: 0px;
+}
 h2 {
 	margin: 0px;
+	text-align: center;
 }
 table.calendar {
 	border: solid 1px #ccc; border-collapse: collapse;
+	margin: 0px auto;
 }
 table.calendar th,
 table.calendar td {
 	border: solid 1px #ccc; border-collapse: collapse;
 	padding: 3px;
 	font-size: 13px;
+	background-color: #f9f9ff;
+}
+table.calendar th {
+	border-bottom: solid 2px #ccc;
 }
 table.calendar td {
 	text-align: right;
+	font-weight: bold;
 }
 
 table.calendar td.holiday {
-	background-color: #f9c;
+	background-color: #fcd;
+	color: #900;
 }
 
 .year-block {
 	max-width: 1200px;
+	clear: both;
 }
 .month-block {
 	float: left;
+	width: 190px;
 	margin: 5px;
 	min-height: 250px;
 }
+.menu{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.menu ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu li{
+	float: left;
+	width: 60px;
+	margin: 0;
+	padding: 0;
+}
+.menu li.current{
+	background-color: #ddf;
+}
+.menu li.target{
+	background-color: #9df;
+}
+
+.menu a{
+	text-align: center;
+	display:block;
+	padding: 0.2em 0;
+	width: 100%;
+	font-size: 10pt;
+}
+

@@ -25,7 +25,6 @@ function get_holidays($year) {
       $holidays[$date] = $title;
     }
     ksort($holidays);
-    print_r($holidays);
     if (file_put_contents($cache, json_encode($holidays)) === false) {
       die('failed to create cache.');
     }
@@ -37,7 +36,9 @@ $year = date('Y');
 if ($_SERVER['SCRIPT_NAME'] != $_SERVER['PATH_INFO']) {
   $args = split('/', $_SERVER['PATH_INFO']);
   if (count($args) > 1) {
-    $year = $args[1];
+    if (is_numeric($args[1])) {
+      $year = $args[1];
+    }
   }
 }
 
@@ -106,17 +107,47 @@ function output_months($year) {
   }
 }
 
+$keywords = array();
+for ($y = date('Y') - 2; $y < date('Y') + 3; $y++) {
+  $keywords[] = $y;
+}
 ?>
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <title><?php echo $year; ?>年 カレンダー</title>
+    <meta name="description" content="祝日カレンダー">
+    <meta name="keywords" content="祝日,カレンダー,<?php echo join(',', $keywords); ?>">
+    <link rel="stylesheet" href="/calendar/style.css" type="text/css">
+    <title><?php echo $year; ?>年 祝日カレンダー</title>
   </head>
   <body>
-    <h1><?php echo $year; ?>年 カレンダー</h1>
+    <h1><?php echo $year; ?>年 祝日カレンダー</h1>
+    <div class="menu">
+      <ul>
+<?php for ($y = date('Y') - 10; $y < date('Y') + 6; $y++) { ?>
+<?php 
+$attr = '';
+if ($y == date('Y')) {
+  $attr = 'class="current"';
+}
+if ($y == $year) {
+  $attr = 'class="target"';
+}
+?>
+  <li <?php echo $attr; ?>>
+    <a href="/calendar/index.php/<?php echo $y; ?>"><?php echo $y; ?>年</a>
+  </li>
+<?php } ?>
+      </ul>
+    </div>
     <div class="year-block">
       <?php output_months($year); ?>
     </div>
   </body>
+<?php
+require_once(dirname(__FILE__) . '/../../lib/ga.php');
+use ga;
+$ga = new ga\GoogleAnalyticsTag();
+$ga->output();
+?>
 </html>
