@@ -7,6 +7,7 @@
     <h1>ググレカス</h1>
     <ul>
       <li><a href="/calendar/">祝日カレンダー</a></li>
+      <li><a href="/password/">パスワード生成</a></li>
     </ul>
 
 <?php

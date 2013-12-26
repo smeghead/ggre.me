@@ -32,6 +32,10 @@ table.calendar td.holiday {
 	color: #900;
 }
 
+table.calendar td.holiday.saturday {
+	color: #009;
+}
+
 .year-block {
 	max-width: 1200px;
 	clear: both;

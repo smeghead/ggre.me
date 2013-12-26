@@ -74,18 +74,30 @@ function output_month($year, $month) {
     $class = '';
     if (in_array($weekday, array('0', '6'))) {
       $class = 'holiday';
+      if ($weekday == '6') {
+        $class .= ' saturday';
+      }
     }
     $additional = '';
+    $description = '';
     if (in_array($current->format('Y-m-d'), array_keys($holidays))) {
-      $class = 'holiday';
+      $class .= ' holiday';
       $descriptions = split(' / ', $holidays[$current->format('Y-m-d')]);
       $description = $descriptions[0];
       $description = str_replace('"', '', $description);
       $additional = sprintf('title="%s"', $description);
     }
-    printf('<td class="%s" %s>%d</td>', $class, $additional, $current->format('d'));
+    if ($description) {
+      $day = sprintf(
+        '<a href="http://ja.wikipedia.org/wiki/%s" target="_blank">%d</a>',
+        $description,
+        $current->format('d'));
+    } else {
+      $day = sprintf('%d', $current->format('d'));
+    }
+    printf('<td class="%s" %s>%s</td>' . "\n", $class, $additional, $day);
     if ($current->format('w') == 6) {
-      print('</tr>');
+      print('</tr>' . "\n");
     }
 
     $current = $current->add(new DateInterval('P1D'));

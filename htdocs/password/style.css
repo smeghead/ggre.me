@@ -1,0 +1,19 @@
+body {
+	color: #333;
+}
+h1 {
+	margin: 0px;
+}
+h2 {
+	margin: 0px;
+	text-align: center;
+}
+
+span.password {
+	font-family: monospace;
+	font-size: 25pt;
+	margin: 5px;
+	padding: 5px;
+	background-color: #eee;
+	line-height: 150%;
+}
