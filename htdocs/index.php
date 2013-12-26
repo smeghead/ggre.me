@@ -8,6 +8,7 @@
     <ul>
       <li><a href="/calendar/">祝日カレンダー</a></li>
       <li><a href="/password/">パスワード生成</a></li>
+      <li><a href="/barcode/">バーコード生成</a></li>
     </ul>
 
 <?php
