@@ -26,6 +26,4 @@ $util->output_header(array(
     </div>
 
 
-<?php
-$util->output_footer();
-?>
+<?php $util->output_footer(); ?>
