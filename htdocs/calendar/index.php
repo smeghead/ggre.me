@@ -123,22 +123,16 @@ $keywords = array();
 for ($y = date('Y') - 2; $y < date('Y') + 3; $y++) {
   $keywords[] = $y;
 }
-?>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="祝日カレンダー">
-    <meta name="keywords" content="祝日,カレンダー,<?php echo join(',', $keywords); ?>">
-    <link rel="stylesheet" href="/common.css" type="text/css">
-    <link rel="stylesheet" href="/calendar/style.css" type="text/css">
-    <title><?php echo $year; ?>年 祝日カレンダー</title>
-  </head>
-  <body>
-<?php
+
 require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
-$util->output_header();
+$util->output_header(array(
+  'title' => $year . '年 祝日カレンダー',
+  'description' => '祝日カレンダー',
+  'keywords' => '祝日,カレンダー,' . join(',', $keywords),
+  'css' => '/calendar/style.css'
+));
 ?>
     <div class="content">
       <h1><?php echo $year; ?>年 祝日カレンダー</h1>
@@ -164,11 +158,5 @@ $util->output_header();
         <?php output_months($year); ?>
       </div>
     </div>
-  </body>
-<?php
-require_once(dirname(__FILE__) . '/../../lib/ga.php');
-use ga;
-$ga = new ga\GoogleAnalyticsTag();
-$ga->output();
-?>
-</html>
+    <p class="clearfix"></p>
+<?php $util->output_footer(); ?>

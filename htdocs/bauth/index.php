@@ -2,22 +2,16 @@
 ini_set('error_reporting', E_ALL);
 
 ?>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="BASIC認証のパスワード生成">
-    <meta name="keywords" content="BASIC認証のパスワード生成,htpasswd,apache,nginx">
-    <link rel="stylesheet" href="/common.css" type="text/css">
-    <link rel="stylesheet" href="/bauth/style.css" type="text/css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <title>BASIC認証のパスワード生成</title>
-  </head>
-  <body>
 <?php
 require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
-$util->output_header();
+$util->output_header(array(
+  'title' => 'BASIC認証のパスワード生成',
+  'description' => 'BASIC認証のパスワード生成',
+  'keywords' => 'BASIC認証のパスワード生成,htpasswd,apache,nginx',
+  'css' => '/bauth/style.css'
+));
 ?>
     <div class="content">
       <h1>BASIC認証のパスワード生成</h1>
@@ -68,14 +62,4 @@ $('span.result').click(function(){
   }
 });
 </script>
-  </body>
-<?php
-require_once(dirname(__FILE__) . '/../../lib/ga.php');
-use ga;
-$ga = new ga\GoogleAnalyticsTag();
-$ga->output();
-?>
-</html>
-
-
-
+<?php $util->output_footer(); ?>

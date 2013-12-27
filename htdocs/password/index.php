@@ -23,23 +23,15 @@ function generate_password() {
   return $password;
 }
 
-?>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="パスワード生成">
-    <meta name="keywords" content="パスワード生成,自動生成">
-    <link rel="stylesheet" href="/common.css" type="text/css">
-    <link rel="stylesheet" href="/password/style.css" type="text/css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <title>パスワード生成</title>
-  </head>
-  <body>
-<?php
 require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
-$util->output_header();
+$util->output_header(array(
+  'title' => 'パスワード生成',
+  'description' => 'パスワード生成',
+  'keywords' => 'パスワード生成,自動生成',
+  'css' => '/password/style.css'
+));
 ?>
     <div class="content">
       <h1>パスワード生成</h1>
@@ -75,12 +67,4 @@ $('span.password').click(function(){
   }
 });
 </script>
-  </body>
-<?php
-require_once(dirname(__FILE__) . '/../../lib/ga.php');
-use ga;
-$ga = new ga\GoogleAnalyticsTag();
-$ga->output();
-?>
-</html>
-
+<?php $util->output_footer(); ?>
