@@ -29,22 +29,31 @@ function generate_password() {
     <meta charset="UTF-8">
     <meta name="description" content="パスワード生成">
     <meta name="keywords" content="パスワード生成,自動生成">
+    <link rel="stylesheet" href="/common.css" type="text/css">
     <link rel="stylesheet" href="/password/style.css" type="text/css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <title>パスワード生成</title>
   </head>
   <body>
-    <h1>パスワード生成</h1>
-    <div class="condition-form">
-      <form method="get">
-      パスワード長さ<input type="number" name="length" value="<?php echo get_length(); ?>">
-        <input type="submit" value="再生成">
-      </form>
-    </div>
-    <div class="passwords">
-<?php for ($i = 0; $i < 30; $i++) { ?>
-  <span class="password"><?php echo generate_password(); ?></span>
-<?php } ?>
+<?php
+require_once(dirname(__FILE__) . '/../../lib/util.php');
+use util;
+$util = new util\Template();
+$util->output_header();
+?>
+    <div class="content">
+      <h1>パスワード生成</h1>
+      <div class="condition-form">
+        <form method="get">
+        パスワード長さ<input type="number" name="length" value="<?php echo get_length(); ?>">
+          <input type="submit" value="再生成">
+        </form>
+      </div>
+      <div class="passwords">
+  <?php for ($i = 0; $i < 30; $i++) { ?>
+    <span class="password"><?php echo generate_password(); ?></span>
+  <?php } ?>
+      </div>
     </div>
 <script type="text/javascript">
 $('span.password').click(function(){

@@ -1,13 +1,3 @@
-body {
-	color: #333;
-}
-h1 {
-	margin: 0px;
-}
-h2 {
-	margin: 0px;
-	text-align: center;
-}
 table.calendar {
 	border: solid 1px #ccc; border-collapse: collapse;
 	margin: 0px auto;

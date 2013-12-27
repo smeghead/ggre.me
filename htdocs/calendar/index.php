@@ -129,31 +129,40 @@ for ($y = date('Y') - 2; $y < date('Y') + 3; $y++) {
     <meta charset="UTF-8">
     <meta name="description" content="祝日カレンダー">
     <meta name="keywords" content="祝日,カレンダー,<?php echo join(',', $keywords); ?>">
+    <link rel="stylesheet" href="/common.css" type="text/css">
     <link rel="stylesheet" href="/calendar/style.css" type="text/css">
     <title><?php echo $year; ?>年 祝日カレンダー</title>
   </head>
   <body>
-    <h1><?php echo $year; ?>年 祝日カレンダー</h1>
-    <div class="menu">
-      <ul>
-<?php for ($y = date('Y') - 10; $y < date('Y') + 6; $y++) { ?>
-<?php 
-$attr = '';
-if ($y == date('Y')) {
-  $attr = 'class="current"';
-}
-if ($y == $year) {
-  $attr = 'class="target"';
-}
+<?php
+require_once(dirname(__FILE__) . '/../../lib/util.php');
+use util;
+$util = new util\Template();
+$util->output_header();
 ?>
-  <li <?php echo $attr; ?>>
-    <a href="/calendar/index.php/<?php echo $y; ?>"><?php echo $y; ?>年</a>
-  </li>
-<?php } ?>
-      </ul>
-    </div>
-    <div class="year-block">
-      <?php output_months($year); ?>
+    <div class="content">
+      <h1><?php echo $year; ?>年 祝日カレンダー</h1>
+      <div class="menu">
+        <ul>
+  <?php for ($y = date('Y') - 10; $y < date('Y') + 6; $y++) { ?>
+  <?php 
+  $attr = '';
+  if ($y == date('Y')) {
+    $attr = 'class="current"';
+  }
+  if ($y == $year) {
+    $attr = 'class="target"';
+  }
+  ?>
+    <li <?php echo $attr; ?>>
+      <a href="/calendar/index.php/<?php echo $y; ?>"><?php echo $y; ?>年</a>
+    </li>
+  <?php } ?>
+        </ul>
+      </div>
+      <div class="year-block">
+        <?php output_months($year); ?>
+      </div>
     </div>
   </body>
 <?php

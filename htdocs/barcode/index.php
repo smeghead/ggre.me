@@ -19,9 +19,26 @@ function get_company_id() {
 }
 
 function generate_barcode() {
+  $png = array(
+    0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d, 0x49, 0x48, 0x44, 0x52,
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x03, 0x00, 0x00, 0x00, 0x25, 0xdb, 0x56,
+    0xca, 0x00, 0x00, 0x00, 0x03, 0x50, 0x4c, 0x54, 0x45, 0x00, 0x00, 0x00, 0xa7, 0x7a, 0x3d, 0xda,
+    0x00, 0x00, 0x00, 0x01, 0x74, 0x52, 0x4e, 0x53, 0x00, 0x40, 0xe6, 0xd8, 0x66, 0x00, 0x00, 0x00,
+    0x0a, 0x49, 0x44, 0x41, 0x54, 0x08, 0xd7, 0x63, 0x60, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0xe2,
+    0x21, 0xbc, 0x33, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82
+  );
+
+  if (!get_product_id() || !get_company_id()) {
+    header('Content-Type: image/png');
+    foreach($png as $b) {
+      print(pack('C', $b));
+    }
+    exit();
+  }
   //nocache_headers();
   $code = new Image_Barcode2();
   $code->draw(get_jancode_from_id(), 'code128', 'png');
+  exit();
 }
 
 function get_jancode_from_id() {
@@ -49,23 +66,32 @@ if ($_REQUEST['image']) {
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="description" content="バーコード生成">
-    <meta name="keywords" content="バーコード生成,自動生成">
+    <meta name="description" content="JAN バーコード生成">
+    <meta name="keywords" content="JAN バーコード生成,自動生成">
+    <link rel="stylesheet" href="/common.css" type="text/css">
     <link rel="stylesheet" href="/password/style.css" type="text/css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <title>バーコード生成</title>
+    <title>JAN バーコード生成</title>
   </head>
   <body>
-    <h1>バーコード生成</h1>
-    <div class="condition-form">
-      <form method="get">
-      自社内商品番号<input type="text" name="product_id" value="<?php echo get_product_id(); ?>">
-      会社コード<input type="text" name="company_id" value="<?php echo get_company_id(); ?>">
-      <input type="submit" value="生成">
-      </form>
-    </div>
-    <div class="barcode-block">
-      <img src="/barcode/index.php?product_id=<?php echo get_product_id(); ?>&company_id=<?php echo get_company_id(); ?>&image=1">
+<?php
+require_once(dirname(__FILE__) . '/../../lib/util.php');
+use util;
+$util = new util\Template();
+$util->output_header();
+?>
+    <div class="content">
+      <h1>JAN バーコード生成</h1>
+      <div class="condition-form">
+        <form method="get">
+        自社内商品番号<input type="text" name="product_id" value="<?php echo htmlspecialchars(get_product_id(), ENT_QUOTES); ?>">
+        会社コード<input type="text" name="company_id" value="<?php echo htmlspecialchars(get_company_id(), ENT_QUOTES); ?>">
+        <input type="submit" value="生成">
+        </form>
+      </div>
+      <div class="barcode-block">
+        <img src="/barcode/index.php?product_id=<?php echo htmlspecialchars(get_product_id(), ENT_QUOTES); ?>&company_id=<?php echo htmlspecialchars(get_company_id(), ENT_QUOTES); ?>&image=1">
+      </div>
     </div>
   </body>
 <?php
