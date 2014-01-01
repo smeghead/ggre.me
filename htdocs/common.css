@@ -45,7 +45,7 @@ div.description {
 	float: left;
 	width: 60px;
 	margin: 0;
-	padding: 0;
+	padding: 5px;
 }
 .main-menu li.current{
 	background-color: #ddf;
@@ -65,4 +65,6 @@ div.description {
 	color: #fff !important;
 }
 
-
+.pages li {
+	padding: 5px;
+}

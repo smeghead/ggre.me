@@ -13,15 +13,16 @@ $util->output_header(array(
       <div class="description">
         このサイトは、小さいツールを集めたサイトです。
       </div>
-      <ul>
+      <ul class="pages">
         <li><a href="/calendar/">祝日カレンダー</a></li>
         <li><a href="/password/">パスワード生成</a></li>
         <li><a href="/barcode/">バーコード生成</a></li>
         <li><a href="/bauth/">BASIC認証のパスワード生成</a></li>
+        <li><a href="/myip/">自分のIPアドレス</a></li>
       </ul>
 
       <div class="description">
-        このサイトで公開されているツールの利用は、無保証です。
+
       </div>
     </div>
 

@@ -40,7 +40,9 @@ class Template {
 
   public function output_footer($params) {
 ?>
-<hr>
+<footer>
+  <hr>
+</footer>
 
 <?php
     $ga = new ga\GoogleAnalyticsTag();
