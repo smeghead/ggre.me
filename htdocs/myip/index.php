@@ -9,7 +9,7 @@ $util = new util\Template();
 $util->output_header(array(
   'title' => '自分のIPアドレス',
   'description' => '自分のアクセス元IPアドレスを表示します。',
-  'keywords' => '自分のIPアドレス,自分のIP,remote address',
+  'keywords' => '自分のIPアドレス,自分のIP,ip 調べ方, ipの調べ方,自分のipアドレスの調べ方, 自分のアドレスの調べ方, グローバルアドレス 調べ方, 携帯ipアドレス 調べ方, パソコンのipアドレスの調べ方, パソコン アドレス 調べ方,パソコン ipアドレス 調べ方,remote address',
   'css' => '/myip/style.css'
 ));
 ?>
