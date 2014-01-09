@@ -22,7 +22,9 @@ class Template {
     <link rel="stylesheet" href="<? echo htmlspecialchars($params['css'], ENT_QUOTES) ?>" type="text/css">
 <?php endif ?>
     <title><?php echo $params['title'] ?></title>
+    <link href="/js/google-code-prettify/prettify.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/js/google-code-prettify/prettify.js"></script>
   </head>
   <body>
     <header>
@@ -40,6 +42,24 @@ class Template {
 
   public function output_footer($params) {
 ?>
+
+<script>
+    $(function(){
+      prettyPrint();
+      console.log('end');
+    });
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ggre.me -->
+<ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-6994803411870749"
+ data-ad-slot="4317119598"
+ data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <footer>
   <hr>
 </footer>

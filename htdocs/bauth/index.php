@@ -43,23 +43,25 @@ $util->output_header(array(
 <?php } ?>
     </div>
 <script type="text/javascript">
-$('span.result').click(function(){
-  var span = this;
-  if (window.getSelection) {
-    var range = document.createRange();
-    range.setStart(span.firstChild,0);
-    range.setEnd(span.firstChild, span.innerHTML.length);
-    var sel = getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-  } else {
-    var range = document.selection.createRange();
-    range.moveToElementText(span);
-    range.collapse();
-    range.moveStart("character", 0);
-    range.moveEnd("character", span.innerHTML.length);
-    range.select();
-  }
+$(function(){
+  $('span.result').click(function(){
+    var span = this;
+    if (window.getSelection) {
+      var range = document.createRange();
+      range.setStart(span.firstChild,0);
+      range.setEnd(span.firstChild, span.innerHTML.length);
+      var sel = getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    } else {
+      var range = document.selection.createRange();
+      range.moveToElementText(span);
+      range.collapse();
+      range.moveStart("character", 0);
+      range.moveEnd("character", span.innerHTML.length);
+      range.select();
+    }
+  });
 });
 </script>
 <?php $util->output_footer(); ?>
