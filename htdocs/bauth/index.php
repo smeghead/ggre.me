@@ -69,7 +69,7 @@ $util->output_header(array(
       </div>
       <h3>APIによるBasic認証パスワード取得方法</h3>
       <div class="description">
-        JavaScriptから利用する場合の例です。
+        JavaScript(jQuery)から利用する場合の例です。
         http://ggre.me/bauth/index.php/generate.json?user_id=john&amp;passwd=xxxxx にアクセスすると、生成したパスワードをjson形式で取得できます。
       </div>
       <pre class="prettyprint">
@@ -89,19 +89,19 @@ $.getJSON('http://ggre.me/bauth/index.php/generate.json', {user_id: 'john', pass
       <input type="button" id="btn-json" value="JSON形式で生成したBasic認証のパスワードを取得する">
 
       <div class="description">
-        JavaScriptから利用する場合の例です。
+        JavaScript(jQuery)から利用する場合の例です。
         http://ggre.me/bauth/index.php/generate.text?user_id=john&amp;passwd=xxxxx にアクセスすると、生成したパスワードをtext形式で取得できます。
       </div>
       <pre class="prettyprint">
 $.get('http://ggre.me/bauth/index.php/generate.text', {user_id: 'john', passwd: 'xxxxx'}, function(data){
-  alert(JSON.stringify(data));
+  alert(data);
 }, 'text');
       </pre>
       <script>
       $(function(){
         $('#btn-text').on('click', function(){
           $.get('http://ggre.me/bauth/index.php/generate.text', {user_id: 'john', passwd: 'xxxxx'}, function(data){
-            alert(JSON.stringify(data));
+            alert(data);
           }, 'text');
         });
       });

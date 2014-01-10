@@ -68,7 +68,7 @@ $util->output_header(array(
       </div>
       <h3>APIによるパスワード取得方法</h3>
       <div class="description">
-        JavaScriptから利用する場合の例です。
+        JavaScript(jQuery)から利用する場合の例です。
         http://ggre.me/password/index.php/generate.json にアクセスすると、生成したパスワードをjson形式で取得できます。
       </div>
       <pre class="prettyprint">
@@ -88,19 +88,19 @@ $.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
       <input type="button" id="btn-json" value="JSON形式で生成したパスワードを取得する">
 
       <div class="description">
-        JavaScriptから利用する場合の例です。
+        JavaScript(jQuery)から利用する場合の例です。
         http://ggre.me/password/index.php/generate.text にアクセスすると、生成したパスワードをtext形式で取得できます。
       </div>
       <pre class="prettyprint">
 $.get('http://ggre.me/password/index.php/generate.text', function(data){
-  alert(JSON.stringify(data));
+  alert(data);
 }, 'text');
       </pre>
       <script>
       $(function(){
         $('#btn-text').on('click', function(){
           $.get('http://ggre.me/password/index.php/generate.text', function(data){
-            alert(JSON.stringify(data));
+            alert(data);
           }, 'text');
         });
       });
