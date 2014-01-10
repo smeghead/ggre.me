@@ -45,7 +45,7 @@ $util->output_header(array(
       </div>
       <h3>自分のIPアドレスを取得するAPI</h3>
       <div class="description">
-        JavaScriptから利用する場合の例です。
+        JavaScript(jQuery)から利用する場合の例です。
         http://ggre.me/myip/index.php/myip.json にアクセスすると、json形式でIPアドレスを取得できます。
       </div>
       <pre class="prettyprint">
@@ -65,7 +65,7 @@ $.getJSON('http://ggre.me/myip/index.php/myip.json', function(data){
       <input type="button" id="btn-json" value="JSON形式で自分のIPアドレスを取得する">
 
       <div class="description">
-        JavaScriptから利用する場合の例です。
+        JavaScript(jQuery)から利用する場合の例です。
         http://ggre.me/myip/index.php/myip.text にアクセスすると、text形式でIPアドレスを取得できます。
       </div>
       <pre class="prettyprint">
