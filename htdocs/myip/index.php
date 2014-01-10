@@ -18,9 +18,9 @@ require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => '自分のIPアドレス',
+  'title' => '自分のIPアドレス API',
   'description' => '自分のアクセス元IPアドレスを表示します。自分のIPアドレスを取得できるAPIの使い方も記載してます。',
-  'keywords' => '自分のIPアドレス,自分のIP,ip 調べ方, ipの調べ方,自分のipアドレスの調べ方, 自分のアドレスの調べ方, グローバルアドレス 調べ方, 携帯ipアドレス 調べ方, パソコンのipアドレスの調べ方, パソコン アドレス 調べ方,パソコン ipアドレス 調べ方,remote address',
+  'keywords' => '自分のIPアドレス,IPアドレス取得API,自分のIP,ip 調べ方, ipの調べ方,自分のipアドレスの調べ方, 自分のアドレスの調べ方, グローバルアドレス 調べ方, 携帯ipアドレス 調べ方, パソコンのipアドレスの調べ方, パソコン アドレス 調べ方,パソコン ipアドレス 調べ方,remote address',
   'css' => '/myip/style.css'
 ));
 ?>
@@ -37,7 +37,7 @@ $util->output_header(array(
           </span>
         </div>
       </div>
-      <h2>API</h2>
+      <h2>自分のIPアドレス取得API</h2>
       <div class="description">
         APIとして利用することができます。
       </div>

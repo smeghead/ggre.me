@@ -1,4 +1,5 @@
 <?php
+ini_set('error_reporting', E_ALL);
 
 $letters = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890');
 function get_length() {
@@ -23,13 +24,26 @@ function generate_password() {
   return $password;
 }
 
+if ($_SERVER['PATH_INFO'] == '/generate.json') {
+  $json = array('password' => generate_password());
+  header('Content-Type: application/json');
+  header('Access-Control-Allow-Origin: *');
+  echo json_encode($json);
+  exit();
+} elseif ($_SERVER['PATH_INFO'] == '/generate.text') {
+  header('Content-Type: application/json');
+  header('Access-Control-Allow-Origin: *');
+  echo generate_password();
+  exit();
+}
+
 require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => 'パスワード生成',
-  'description' => 'パスワード生成',
-  'keywords' => 'パスワード生成,自動生成',
+  'title' => 'パスワード生成 API',
+  'description' => 'ランダムな文字列のパスワードを生成します。APIとして利用することもできます。',
+  'keywords' => '自動生成,API,パスワード自動生成API, パスワード自動生成, パスワード生成ツール, ランダムパスワード生成, パスワード生成機, パス生成, パスワード作成ツール, ランダムパスワード作成',
   'css' => '/password/style.css'
 ));
 ?>
@@ -46,6 +60,51 @@ $util->output_header(array(
     <span class="password"><?php echo generate_password(); ?></span>
   <?php } ?>
       </div>
+
+      <h2>パスワード生成API</h2>
+      <div class="description">
+        APIとして利用することができます。
+      </div>
+      <h3>APIによるパスワード取得方法</h3>
+      <div class="description">
+        JavaScriptから利用する場合の例です。
+        http://ggre.me/password/index.php/generate.json にアクセスすると、生成したパスワードをjson形式でを取得できます。
+      </div>
+      <pre class="prettyprint">
+$.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
+  alert(JSON.stringify(data));
+});
+      </pre>
+      <script>
+      $(function(){
+        $('#btn-json').on('click', function(){
+          $.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
+            alert(JSON.stringify(data));
+          });
+        });
+      });
+      </script>
+      <input type="button" id="btn-json" value="JSON形式で生成したパスワードを取得する">
+
+      <div class="description">
+        JavaScriptから利用する場合の例です。
+        http://ggre.me/password/index.php/generate.text にアクセスすると、生成したパスワードをtext形式でを取得できます。
+      </div>
+      <pre class="prettyprint">
+$.get('http://ggre.me/password/index.php/generate.text', function(data){
+  alert(JSON.stringify(data));
+}, 'text');
+      </pre>
+      <script>
+      $(function(){
+        $('#btn-text').on('click', function(){
+          $.get('http://ggre.me/password/index.php/generate.text', function(data){
+            alert(JSON.stringify(data));
+          }, 'text');
+        });
+      });
+      </script>
+      <input type="button" id="btn-text" value="TEXT形式で生成したパスワードを取得する">
     </div>
 <script type="text/javascript">
 $(function(){
