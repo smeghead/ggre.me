@@ -37,6 +37,8 @@ $util->output_header(array(
           </span>
         </div>
       </div>
+
+      <hr/>
       <h2>自分のIPアドレス取得API</h2>
       <div class="description">
         APIとして利用することができます。

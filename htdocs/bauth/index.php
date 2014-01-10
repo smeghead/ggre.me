@@ -62,6 +62,7 @@ $util->output_header(array(
       </div>
 <?php } ?>
 
+      <hr/>
       <h2>Basic認証のパスワード生成API</h2>
       <div class="description">
         APIとして利用することができます。
@@ -69,7 +70,7 @@ $util->output_header(array(
       <h3>APIによるBasic認証パスワード取得方法</h3>
       <div class="description">
         JavaScriptから利用する場合の例です。
-        http://ggre.me/bauth/index.php/generate.json にアクセスすると、生成したパスワードをjson形式でを取得できます。
+        http://ggre.me/bauth/index.php/generate.json にアクセスすると、生成したパスワードをjson形式で取得できます。
       </div>
       <pre class="prettyprint">
 $.getJSON('http://ggre.me/bauth/index.php/generate.json', {user_id: 'john', passwd: 'xxxxx'}, function(data){
@@ -89,7 +90,7 @@ $.getJSON('http://ggre.me/bauth/index.php/generate.json', {user_id: 'john', pass
 
       <div class="description">
         JavaScriptから利用する場合の例です。
-        http://ggre.me/bauth/index.php/generate.text にアクセスすると、生成したパスワードをtext形式でを取得できます。
+        http://ggre.me/bauth/index.php/generate.text にアクセスすると、生成したパスワードをtext形式で取得できます。
       </div>
       <pre class="prettyprint">
 $.get('http://ggre.me/bauth/index.php/generate.text', {user_id: 'john', passwd: 'xxxxx'}, function(data){

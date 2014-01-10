@@ -61,6 +61,7 @@ $util->output_header(array(
   <?php } ?>
       </div>
 
+      <hr/>
       <h2>パスワード生成API</h2>
       <div class="description">
         APIとして利用することができます。
@@ -68,7 +69,7 @@ $util->output_header(array(
       <h3>APIによるパスワード取得方法</h3>
       <div class="description">
         JavaScriptから利用する場合の例です。
-        http://ggre.me/password/index.php/generate.json にアクセスすると、生成したパスワードをjson形式でを取得できます。
+        http://ggre.me/password/index.php/generate.json にアクセスすると、生成したパスワードをjson形式で取得できます。
       </div>
       <pre class="prettyprint">
 $.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
@@ -88,7 +89,7 @@ $.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
 
       <div class="description">
         JavaScriptから利用する場合の例です。
-        http://ggre.me/password/index.php/generate.text にアクセスすると、生成したパスワードをtext形式でを取得できます。
+        http://ggre.me/password/index.php/generate.text にアクセスすると、生成したパスワードをtext形式で取得できます。
       </div>
       <pre class="prettyprint">
 $.get('http://ggre.me/password/index.php/generate.text', function(data){
