@@ -1,0 +1,74 @@
+div.result-block div {
+	margin: 0px;
+}
+div.result-block span.result {
+	padding: 10px;
+	background-color: #eee;
+	font-size: 25pt;
+}
+div.matrix-block {
+	width: 500px;
+	height: 300px;
+	position: relative;
+}
+div.matrix-block .label {
+	width: 100px;
+	height: 20px;
+	text-align: center;
+	position: absolute;
+	margin: 0px;
+	padding: 5px;
+	background-color: #444;
+	color: #eee;
+	border-radius: 5px;
+}
+div.matrix-block .label-x {
+	right: 3px;
+	top: 135px;
+}
+div.matrix-block .label--x {
+	top: 135px;
+	left: 3px;
+}
+div.matrix-block .label-y {
+	left: 195px;
+	top: 3px;
+}
+div.matrix-block .label--y {
+	left: 195px;
+	bottom: 3px;
+}
+div.matrix-block .url {
+	width: 200px;
+	height: 20px;
+	text-align: right;
+	position: absolute;
+	margin: 0px;
+	padding: 2px;
+	right: 3px;
+	bottom: 3px;
+}
+
+table.matrix {
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+	background: -moz-linear-gradient(top center, #fff 0%, #69c 100%);
+	background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#69c));
+	background: linear-gradient(top center, #fff 0%, #69c 100%);
+}
+table.matrix td {
+	width: 250px;
+	border: 1px solid #333;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20pt;
+}
+table.matrix .cluster {
+}
+input#title {
+	width: 400px;
+}
+div.result-block div.nav-actions {
+	margin: 10px 0px;
+}
