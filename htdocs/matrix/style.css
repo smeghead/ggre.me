@@ -1,5 +1,11 @@
-div.result-block div {
+div.content {
 	margin: 0px;
+	text-align: center;
+}
+
+div.result-block div {
+	margin: 0px auto;
+	text-align: center;
 }
 div.result-block span.result {
 	padding: 10px;
@@ -7,35 +13,33 @@ div.result-block span.result {
 	font-size: 25pt;
 }
 div.matrix-block {
-	width: 500px;
-	height: 300px;
+	width: 360px;
+	height: 222px;
 	position: relative;
 }
 div.matrix-block .label {
-	width: 100px;
-	height: 20px;
+/*        width: 100px;*/
 	text-align: center;
 	position: absolute;
 	margin: 0px;
-	padding: 5px;
+	padding: 4px;
 	background-color: #444;
 	color: #eee;
 	border-radius: 5px;
+	font-size: 10pt;
+	white-space:nowrap;
+	z-index: 100;
 }
 div.matrix-block .label-x {
 	right: 3px;
-	top: 135px;
 }
 div.matrix-block .label--x {
-	top: 135px;
 	left: 3px;
 }
 div.matrix-block .label-y {
-	left: 195px;
 	top: 3px;
 }
 div.matrix-block .label--y {
-	left: 195px;
 	bottom: 3px;
 }
 div.matrix-block .url {
@@ -43,6 +47,8 @@ div.matrix-block .url {
 	height: 20px;
 	text-align: right;
 	position: absolute;
+	font-size: 8pt;
+	font-family: 'Lucida Grande', Meiryo, sans-serif;
 	margin: 0px;
 	padding: 2px;
 	right: 3px;
@@ -56,19 +62,36 @@ table.matrix {
 	background: -moz-linear-gradient(top center, #fff 0%, #69c 100%);
 	background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#69c));
 	background: linear-gradient(top center, #fff 0%, #69c 100%);
+	background-color: #69c;
 }
 table.matrix td {
-	width: 250px;
+	width: 50%;
+	height: 50%;
 	border: 1px solid #333;
 	text-align: center;
 	font-weight: bold;
-	font-size: 20pt;
+	font-size: 15pt;
 }
 table.matrix .cluster {
 }
 input#title {
-	width: 400px;
+	width: 360px;
 }
 div.result-block div.nav-actions {
 	margin: 10px 0px;
+}
+div.font-block {
+	font-size: 15pt;
+}
+span.color-area {
+	width: 25px; 
+	display: inline-block;
+	border: 1px solid #ccc;
+}
+div.result-block div.nav-actions div {
+	margin: 10px;
+}
+div.result-block div.nav-actions input#create-url {
+	margin: 30px;
+	padding: 10px 30px;
 }
