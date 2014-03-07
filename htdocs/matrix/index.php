@@ -104,7 +104,7 @@ require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => $title ? $title : '四象限マトリクス API' ,
+  'title' => $title ? $title : '四象限マトリクスジェネレーター' ,
   'description' => '四象限マトリクスのグラフを生成します。',
   'keywords' => '四象限,マトリクス,グラフ',
   'css' => '/matrix/style.css'
