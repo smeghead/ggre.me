@@ -90,8 +90,8 @@ function v($name, $default) {
 $title = v('title', '');
 $font = v('font', 'deco-maru-font');
 $theme = v('theme', '#69c');
-$label_x = v('label-x', '儲かる');
-$label__x = v('label--x', '儲からない');
+$label_x = v('label-x', '裕福');
+$label__x = v('label--x', '貧乏');
 $label_y = v('label-y', '忙しい');
 $label__y = v('label--y', 'ひま');
 $culster1 = v('culster1', '和民社員');
@@ -104,7 +104,7 @@ require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => $title ? $title : '四象限マトリクスジェネレーター' ,
+  'title' => isEdit() ? '四象限マトリクスジェネレーター' : $title,
   'description' => '四象限マトリクスのグラフを生成します。',
   'keywords' => '四象限,マトリクス,グラフ',
   'css' => '/matrix/style.css'
@@ -173,7 +173,7 @@ $util->output_header(array(
   <input id="title" type="text" value="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>" placeholder="グラフのタイトルを入力してください。" />
 </div>
 <div class="font-block">
-  <input id="font-normal" type="radio" name="font" value="" <?php if ($font == '') { echo 'checked="checked"'; } ?> /><label for="font-normal" class="">ノーマル</label>
+  <input id="font-normal" type="radio" name="font" value="" <?php if ($font == '') { echo 'checked="checked"'; } ?> /><label for="font-normal" class="">普通</label>
   <input id="font-deco-maru-font" type="radio" name="font" value="deco-maru-font" <?php if ($font == 'deco-maru-font') { echo 'checked="checked"'; } ?> /><label for="font-deco-maru-font" class="deco-maru-font">まる字</label>
   <input id="font-deco-TanukiPM" type="radio" name="font" value="deco-TanukiPM" <?php if ($font == 'deco-TanukiPM') { echo 'checked="checked"'; } ?> /><label for="font-deco-TanukiPM" class="deco-TanukiPM">たぬき油性マジック</label>
 </div>

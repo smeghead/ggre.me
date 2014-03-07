@@ -12,6 +12,9 @@ div.result-block span.result {
 	background-color: #eee;
 	font-size: 25pt;
 }
+div.content h1 {
+	margin-bottom: 20px;
+}
 div.matrix-block {
 	width: 360px;
 	height: 222px;
@@ -44,7 +47,6 @@ div.matrix-block .label--y {
 }
 div.matrix-block .url {
 	width: 200px;
-	height: 20px;
 	text-align: right;
 	position: absolute;
 	font-size: 8pt;
@@ -75,7 +77,8 @@ table.matrix td {
 table.matrix .cluster {
 }
 input#title {
-	width: 360px;
+	width: 350px;
+	font-size: 15pt;
 }
 div.result-block div.nav-actions {
 	margin: 10px 0px;
