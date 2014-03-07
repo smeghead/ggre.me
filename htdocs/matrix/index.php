@@ -88,7 +88,7 @@ function v($name, $default) {
 }
 
 $title = v('title', '');
-$font = v('font', '');
+$font = v('font', 'deco-maru-font');
 $theme = v('theme', '#69c');
 $label_x = v('label-x', '儲かる');
 $label__x = v('label--x', '儲からない');
@@ -127,40 +127,40 @@ $util->output_header(array(
 <?php } ?>
       <div class="result-block">
         <div class="matrix-block">
-          <span class="label label-x">
+          <span class="label label-x" title="<?php echo htmlspecialchars($label_x, ENT_QUOTES); ?>">
             <?php echo htmlspecialchars($label_x, ENT_QUOTES); ?>
           </span>
-          <span class="label label--x">
+          <span class="label label--x" title="<?php echo htmlspecialchars($label__x, ENT_QUOTES); ?>">
             <?php echo htmlspecialchars($label__x, ENT_QUOTES); ?>
           </span>
-          <span class="label label-y">
+          <span class="label label-y" title="<?php echo htmlspecialchars($label_y, ENT_QUOTES); ?>">
             <?php echo htmlspecialchars($label_y, ENT_QUOTES); ?>
           </span>
-          <span class="label label--y">
+          <span class="label label--y" title="<?php echo htmlspecialchars($label__y, ENT_QUOTES); ?>">
             <?php echo htmlspecialchars($label__y, ENT_QUOTES); ?>
           </span>
             <span class="url"><a href="<?php echo $shortUrl; ?>"><?php echo str_replace('http://', '', $shortUrl); ?></a></span>
           <table class="matrix">
             <tr>
               <td>
-                <span class="cluster culster1">
+                <span class="cluster culster1" title="<?php echo htmlspecialchars($culster1, ENT_QUOTES); ?>">
                   <?php echo htmlspecialchars($culster1, ENT_QUOTES); ?>
                 </span>
               </td>
               <td>
-                <span class="cluster culster2">
+                <span class="cluster culster2" title="<?php echo htmlspecialchars($culster2, ENT_QUOTES); ?>">
                   <?php echo htmlspecialchars($culster2, ENT_QUOTES); ?>
                 </span>
               </td>
             </tr>
             <tr>
               <td>
-                <span class="cluster culster3">
+                <span class="cluster culster3" title="<?php echo htmlspecialchars($culster3, ENT_QUOTES); ?>">
                   <?php echo htmlspecialchars($culster3, ENT_QUOTES); ?>
                 </span>
               </td>
               <td>
-                <span class="cluster culster4">
+                <span class="cluster culster4" title="<?php echo htmlspecialchars($culster4, ENT_QUOTES); ?>">
                   <?php echo htmlspecialchars($culster4, ENT_QUOTES); ?>
                 </span>
               </td>
@@ -186,7 +186,7 @@ $util->output_header(array(
   <input id="theme-yellow" type="radio" name="theme" value="#ffff93" <?php if ($theme == '#ffff93') { echo 'checked="checked"'; } ?> /><label for="theme-yellow" class=""><span class="color-area" style="background-color: #ffff93;">&nbsp;</a></label>
 </div>
 <div>
-          <input id="create-url" type="button" value="URLを生成する" />
+          <input id="create-url" type="button" value="四象限マトリクスを生成する" />
 </div>
 <?php } else { ?>
           <a class="nav-back" href="/matrix">四象限マトリクを編集する</a>
