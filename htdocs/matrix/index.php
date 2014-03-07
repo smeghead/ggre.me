@@ -1,14 +1,79 @@
 <?php
 ini_set('error_reporting', E_ALL);
 
+$api_url = 'https://www.googleapis.com/urlshortener/v1/url';
+$api_key = 'AIzaSyDgZ2Ynx9zb1JlaUybehiBYcmMOZ1dW7hE';
+
+function compress_url($url) {
+  global $api_url, $api_key;
+  $curl = curl_init("$api_url?key=$api_key");
+  curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+  curl_setopt($curl, CURLOPT_POST, 1);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, '{"longUrl":"' . $url . '"}');
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  $res = curl_exec($curl);
+  curl_close($curl);
+
+  $json = json_decode($res);
+  return $json->id;
+}
+
+function decompress_url($url) {
+  global $api_url, $api_key;
+  $curl = curl_init("$api_url?key=$api_key&shortUrl=$url");
+  curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  $res = curl_exec($curl);
+  curl_close($curl);
+
+  $json = json_decode($res);
+  return $json->longUrl;
+}
+
+$pathinfo = $_SERVER['PATH_INFO'];
+if ($pathinfo == '/matrix/') {
+  $pathinfo = '';
+}
+if ($pathinfo) {
+  //pathinfoがある場合は、短縮URLとして扱う
+  $originalUrl = decompress_url('http://goo.gl' . $pathinfo);
+  $url = parse_url($originalUrl);
+  parse_str($url['query'], $params);
+  foreach ($params as $k => $v) {
+    //強制的にパラメータを上書きする。
+    $_REQUEST[$k] = $v;
+  }
+  $shortUrl = 'http://ggre.me/matrix' . $pathinfo;
+} else {
+  if (!isEdit()) {
+    $myUrl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];;
+    $sUrl = compress_url($myUrl);
+    preg_match('/\/([0-9a-zA-Z]+)$/', $sUrl, $matches);
+    $redirectUrl = 'http://ggre.me/matrix/' . $matches[1];
+    header('Location: ' . $redirectUrl);
+    exit();
+  }
+}
+
+
+
 function isEdit() {
   return !isset($_REQUEST['title']);
 }
 
 function v($name, $default) {
-  $ref = $_SERVER["HTTP_REFERER"];
   $val = $default;
-  if (strstr($ref, '?title=') > -1) {
+  $ref = $_SERVER["HTTP_REFERER"];
+  if (strstr($ref, $_SERVER['HTTP_HOST']) == -1) {
+    //他のサイトから来た場合はデフォルト文字列を返却する。
+    return $default;
+  }
+
+  if (strstr($ref, '?title=') === false) {
+    $pathinfo = strrchr($ref, '/');
+    $ref = decompress_url('http://goo.gl' . $pathinfo);
+  }
+  if (strstr($ref, '?title=') !== false) {
     $url = parse_url($ref);
     parse_str($url['query'], $params);
     if (isset($params[$name])) {
@@ -21,6 +86,7 @@ function v($name, $default) {
   }
   return $val;
 }
+
 $title = v('title', '');
 $font = v('font', '');
 $theme = v('theme', '#69c');
@@ -38,9 +104,9 @@ require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => $title ? $title : '4象限マトリクス API' ,
-  'description' => '4象限マトリクスのグラフを生成します。',
-  'keywords' => '4象限,マトリクス,グラフ',
+  'title' => $title ? $title : '四象限マトリクス API' ,
+  'description' => '四象限マトリクスのグラフを生成します。',
+  'keywords' => '四象限,マトリクス,グラフ',
   'css' => '/matrix/style.css'
 ));
 ?>
@@ -49,9 +115,9 @@ $util->output_header(array(
 
     <div class="content">
 <?php if (isEdit()) { ?>
-      <h1>4象限マトリクスジェネレーター</h1>
+      <h1>四象限マトリクスジェネレーター</h1>
       <div class="description">
-        4象限マトリクスのグラフを生成します。
+        四象限マトリクスのグラフを生成します。
       </div>
       <div class="description">
         グラフの中の変更したい文字をクリックして下さい。
@@ -73,7 +139,7 @@ $util->output_header(array(
           <span class="label label--y">
             <?php echo htmlspecialchars($label__y, ENT_QUOTES); ?>
           </span>
-          <span class="url"><a href=""></a></span>
+            <span class="url"><a href="<?php echo $shortUrl; ?>"><?php echo str_replace('http://', '', $shortUrl); ?></a></span>
           <table class="matrix">
             <tr>
               <td>
@@ -123,7 +189,7 @@ $util->output_header(array(
           <input id="create-url" type="button" value="URLを生成する" />
 </div>
 <?php } else { ?>
-          <a class="nav-back" href="/matrix">4象限マトリクスジェネレーターに戻る</a>
+          <a class="nav-back" href="/matrix">四象限マトリクを編集する</a>
 <?php } ?>
         </div>
       </div>
@@ -170,10 +236,10 @@ $util->output_header(array(
 <?php } else { ?>
   <div>
     <h3 id="sample">ブログパーツ</h3>
-    作成した4象限マトリクスのグラフを、ブログなどに貼り付けることができます。
+    作成した四象限マトリクスのグラフを、ブログなどに貼り付けることができます。
     以下のタグをブログに貼り付けて下さい。
     <pre class="prettyprint">
-      &lt;iframe src="<span id="blog-part-link">http://goo.gl/WC2s4b</span>" style="width: 530px; height: 500px;"&gt;&lt;/iframe&gt;
+      &lt;iframe src="<?php echo $shortUrl; ?>" style="width: 530px; height: 500px;"&gt;&lt;/iframe&gt;
     </pre>
   </div>
   <script type="text/javascript">
@@ -184,18 +250,7 @@ $util->output_header(array(
       $('footer').hide();
     }
   });
-
-  function load(){
-    gapi.client.setApiKey('AIzaSyBy2BDR9xFMg98Eb1vAaWQpUcEswkOlNSQ');
-    gapi.client.load('urlshortener', 'v1',　function(){
-      gapi.client.urlshortener.url.insert({"resource": {"longUrl": location.href}}).execute(function(resp){
-        $('.matrix-block .url a').attr('href', resp.id).text(resp.id);
-        $('#blog-part-link').text(resp.id);
-      });
-    });
-  }
   </script>
-  <script src="https://apis.google.com/js/client.js?onload=load"></script>
 <?php } ?>
   <script type="text/javascript">
   $(function(){

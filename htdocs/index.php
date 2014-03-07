@@ -14,12 +14,12 @@ $util->output_header(array(
         このサイトは、小さいツールやAPIを集めたサイトです。
       </div>
       <ul class="pages">
+        <li><a href="/matrix/">四象限マトリクスジェネレーター</a></li>
         <li><a href="/calendar/">祝日カレンダー</a></li>
         <li><a href="/password/">パスワード生成(APIあり)</a></li>
         <li><a href="/barcode/">バーコード生成</a></li>
         <li><a href="/bauth/">BASIC認証のパスワード生成(APIあり)</a></li>
         <li><a href="/myip/">自分のIPアドレス(APIあり)</a></li>
-        <li><a href="/matrix/">4象限マトリクスジェネレーター</a></li>
       </ul>
 
       <div class="description">
