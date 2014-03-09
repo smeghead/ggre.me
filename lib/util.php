@@ -62,6 +62,9 @@ class Template {
 
 <footer>
   <hr>
+  <div class="copyright">
+    &copy; <a href="http://twitter.com/smeghead" target="_blank">@smeghead</a>
+  </div>
 </footer>
 
 <?php

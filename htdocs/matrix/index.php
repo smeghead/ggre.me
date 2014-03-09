@@ -114,6 +114,7 @@ $util->output_header(array(
     <script type="text/javascript" src="http://site.decomoji.jp/js/aKv4T.js" charset="utf-8"></script>
 
     <div class="content">
+      <img id="logo" src="matrix.png" alt="logo"/>
 <?php if (isEdit()) { ?>
       <h1>四象限マトリクスジェネレーター</h1>
       <div class="description">
@@ -169,25 +170,27 @@ $util->output_header(array(
         </div>
         <div class="nav-actions">
 <?php if (isEdit()) { ?>
-<div>
-  <input id="title" type="text" value="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>" placeholder="グラフのタイトルを入力してください。" />
-</div>
-<div class="font-block">
-  <input id="font-normal" type="radio" name="font" value="" <?php if ($font == '') { echo 'checked="checked"'; } ?> /><label for="font-normal" class="">普通</label>
-  <input id="font-deco-maru-font" type="radio" name="font" value="deco-maru-font" <?php if ($font == 'deco-maru-font') { echo 'checked="checked"'; } ?> /><label for="font-deco-maru-font" class="deco-maru-font">まる字</label>
-  <input id="font-deco-TanukiPM" type="radio" name="font" value="deco-TanukiPM" <?php if ($font == 'deco-TanukiPM') { echo 'checked="checked"'; } ?> /><label for="font-deco-TanukiPM" class="deco-TanukiPM">たぬき油性マジック</label>
-</div>
-<div class="color-block">
-  <input id="theme-blue" type="radio" name="theme" value="#69c" <?php if ($theme == '#69c') { echo 'checked="checked"'; } ?> /><label for="theme-blue" class=""><span class="color-area" style="background-color: #69c;">&nbsp;</a></label>
-  <input id="theme-red" type="radio" name="theme" value="#ff7f7f" <?php if ($theme == '#ff7f7f') { echo 'checked="checked"'; } ?> /><label for="theme-red" class=""><span class="color-area" style="background-color: #ff7f7f;">&nbsp;</a></label>
-  <input id="theme-black" type="radio" name="theme" value="#999" <?php if ($theme == '#999') { echo 'checked="checked"'; } ?> /><label for="theme-black" class=""><span class="color-area" style="background-color: #999;">&nbsp;</a></label>
-  <input id="theme-green" type="radio" name="theme" value="#CCFF99" <?php if ($theme == '#CCFF99') { echo 'checked="checked"'; } ?> /><label for="theme-green" class=""><span class="color-area" style="background-color: #CCFF99;">&nbsp;</a></label>
-  <input id="theme-pink" type="radio" name="theme" value="#FF99CC" <?php if ($theme == '#FF99CC') { echo 'checked="checked"'; } ?> /><label for="theme-pink" class=""><span class="color-area" style="background-color: #FF99CC;">&nbsp;</a></label>
-  <input id="theme-yellow" type="radio" name="theme" value="#ffff93" <?php if ($theme == '#ffff93') { echo 'checked="checked"'; } ?> /><label for="theme-yellow" class=""><span class="color-area" style="background-color: #ffff93;">&nbsp;</a></label>
-</div>
-<div>
-          <input id="create-url" type="button" value="四象限マトリクスを生成する" />
-</div>
+<form id="matrix-form">
+  <div>
+    <input id="title" type="text" value="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>" placeholder="グラフのタイトルを入力してください。" />
+  </div>
+  <div class="font-block">
+    <input id="font-normal" type="radio" name="font" value="" <?php if ($font == '') { echo 'checked="checked"'; } ?> /><label for="font-normal" class="">普通</label>
+    <input id="font-deco-maru-font" type="radio" name="font" value="deco-maru-font" <?php if ($font == 'deco-maru-font') { echo 'checked="checked"'; } ?> /><label for="font-deco-maru-font" class="deco-maru-font">まる字</label>
+    <input id="font-deco-TanukiPM" type="radio" name="font" value="deco-TanukiPM" <?php if ($font == 'deco-TanukiPM') { echo 'checked="checked"'; } ?> /><label for="font-deco-TanukiPM" class="deco-TanukiPM">たぬき油性マジック</label>
+  </div>
+  <div class="color-block">
+    <input id="theme-blue" type="radio" name="theme" value="#69c" <?php if ($theme == '#69c') { echo 'checked="checked"'; } ?> /><label for="theme-blue" class=""><span class="color-area" style="background-color: #69c;">&nbsp;</a></label>
+    <input id="theme-red" type="radio" name="theme" value="#ff7f7f" <?php if ($theme == '#ff7f7f') { echo 'checked="checked"'; } ?> /><label for="theme-red" class=""><span class="color-area" style="background-color: #ff7f7f;">&nbsp;</a></label>
+    <input id="theme-black" type="radio" name="theme" value="#999" <?php if ($theme == '#999') { echo 'checked="checked"'; } ?> /><label for="theme-black" class=""><span class="color-area" style="background-color: #999;">&nbsp;</a></label>
+    <input id="theme-green" type="radio" name="theme" value="#CCFF99" <?php if ($theme == '#CCFF99') { echo 'checked="checked"'; } ?> /><label for="theme-green" class=""><span class="color-area" style="background-color: #CCFF99;">&nbsp;</a></label>
+    <input id="theme-pink" type="radio" name="theme" value="#FF99CC" <?php if ($theme == '#FF99CC') { echo 'checked="checked"'; } ?> /><label for="theme-pink" class=""><span class="color-area" style="background-color: #FF99CC;">&nbsp;</a></label>
+    <input id="theme-yellow" type="radio" name="theme" value="#ffff93" <?php if ($theme == '#ffff93') { echo 'checked="checked"'; } ?> /><label for="theme-yellow" class=""><span class="color-area" style="background-color: #ffff93;">&nbsp;</a></label>
+  </div>
+  <div>
+    <input type="submit" value="四象限マトリクスを生成する" />
+  </div>
+</form>
 <?php } else { ?>
           <a class="nav-back" href="/matrix">四象限マトリクを編集する</a>
 <?php } ?>
@@ -210,7 +213,8 @@ $util->output_header(array(
       title.css('background-color', 'white');
     });
 
-    $('#create-url').on('click', function(){
+    $('#matrix-form').on('submit', function(ev){
+      ev.preventDefault();
       var title = $('#title');
       if (title.val().length == 0) {
         title.css('background-color', '#FFCCCC');

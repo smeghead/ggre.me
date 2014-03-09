@@ -68,3 +68,7 @@ div.description {
 .pages li {
 	padding: 5px;
 }
+div.copyright {
+	text-align: right;
+	margin-right: 10px;
+}

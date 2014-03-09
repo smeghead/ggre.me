@@ -1,3 +1,6 @@
+img#logo {
+	display: none;
+}
 div.content {
 	margin: 0px;
 	text-align: center;
