@@ -101,3 +101,6 @@ div.result-block div.nav-actions input#create-url {
 	margin: 30px;
 	padding: 10px 30px;
 }
+.links ul {
+	list-style: none;
+}

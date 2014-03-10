@@ -86,4 +86,14 @@ $util->output_header(array(
         <img src="/barcode/index.php?product_id=<?php echo htmlspecialchars(get_product_id(), ENT_QUOTES); ?>&company_id=<?php echo htmlspecialchars(get_company_id(), ENT_QUOTES); ?>&image=1">
       </div>
     </div>
+
+    <hr/>
+    <h2>LINKS</h2>
+    <div class="links">
+      <ul>
+        <li><a href="http://www.dsri.jp/jan/" target="_blank">JANコード登録│ 一般財団法人流通システム開発センター</a></li>
+        <li><a href="http://www5d.biglobe.ne.jp/~bar/index.html" target="_blank">バーコードの作成</a></li>
+        <li><a href="http://rs-lab.net/jancode/" target="_blank">無料バーコード作成ツール</a></li>
+      </ul>
+    </div>
 <?php $util->output_footer(); ?>

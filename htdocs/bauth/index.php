@@ -107,6 +107,16 @@ $.get('http://ggre.me/bauth/index.php/generate.text', {user_id: 'john', passwd: 
       });
       </script>
       <input type="button" id="btn-text" value="TEXT形式で生成したBasic認証のパスワードを取得する">
+
+      <hr/>
+      <h2>LINKS</h2>
+      <div class="links">
+        <ul>
+          <li><a href="http://ja.wikipedia.org/wiki/Basic%E8%AA%8D%E8%A8%BC" target="_blank">Basic認証 - Wikipedia</a></li>
+          <li><a href="http://allabout.co.jp/gm/gc/23780/" target="_blank">基本認証でアクセス制限をかける方法 [ホームページ作成] All About</a></li>
+          <li><a href="http://orange-factory.com/tool/crypt.cgi" target="_blank">BASIC認証用 パスワード暗号化ツール</a></li>
+        </ul>
+      </div>
     </div>
 <script type="text/javascript">
 $(function(){

@@ -157,6 +157,15 @@ $util->output_header(array(
       <div class="year-block">
         <?php output_months($year); ?>
       </div>
+
+      <hr/>
+      <h2>LINKS</h2>
+      <div class="links">
+        <ul>
+          <li><a href="http://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC" target="_blank">カレンダー - Wikipedia</a></li>
+          <li><a href="http://www.benri.com/calendar/" target="_blank">「便利コム」カレンダー(祝日・六曜付き)</a></li>
+        </ul>
+      </div>
     </div>
     <p class="clearfix"></p>
 <?php $util->output_footer(); ?>

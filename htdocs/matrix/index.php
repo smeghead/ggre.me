@@ -18,16 +18,20 @@ function compress_url($url) {
   return $json->id;
 }
 
+$memo = array();
 function decompress_url($url) {
-  global $api_url, $api_key;
-  $curl = curl_init("$api_url?key=$api_key&shortUrl=$url");
-  curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-  $res = curl_exec($curl);
-  curl_close($curl);
+  global $api_url, $api_key, $memo;
+  if (!array_key_exists($url, $memo)) {
+    $curl = curl_init("$api_url?key=$api_key&shortUrl=$url");
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $res = curl_exec($curl);
+    curl_close($curl);
 
-  $json = json_decode($res);
-  return $json->longUrl;
+    $json = json_decode($res);
+    $memo[$url] = $json->longUrl;
+  }
+  return $memo[$url];
 }
 
 $pathinfo = $_SERVER['PATH_INFO'];
@@ -245,6 +249,8 @@ $util->output_header(array(
     <pre class="prettyprint">
       &lt;iframe src="<?php echo $shortUrl; ?>" style="width: 530px; height: 500px;"&gt;&lt;/iframe&gt;
     </pre>
+
+    <hr/>
   </div>
   <script type="text/javascript">
   $(function(){
@@ -256,6 +262,16 @@ $util->output_header(array(
   });
   </script>
 <?php } ?>
+  <h2>LINKS</h2>
+  <div class="links">
+    <ul>
+      <li><a href="http://www.higuchi.com/item/672" target="_blank">コンサル風４象限マトリクスチャートにはだまされないぞ [困ったプレゼン] - higuchi.com blog</a></li>
+      <li><a href="https://www.google.co.jp/search?num=100&espv=210&es_sm=93&q=%E5%9B%9B%E8%B1%A1%E9%99%90%E3%83%9E%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9&oq=%E5%9B%9B%E8%B1%A1%E9%99%90%E3%83%9E%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9&gs_l=serp.3..0.1909.1909.0.2027.1.1.0.0.0.0.96.96.1.1.0....0...1c.1.37.serp..0.1.96.3rKts0rqnoo" target="_blank">四象限マトリクス - Google 検索</a></li>
+      <li><a href="http://sustoco.concentinc.jp/shikumi/matrix/" target="_blank">「普通」「曖昧」を表すマトリクス - 勝手に伝わるしくみ | サストコ</a></li>
+      <li><a href="http://allabout.co.jp/gm/gc/376046/2/" target="_blank">2/3 代表的な情報整理「マトリクス」 [ロジカルシンキング] All About</a></li>
+      <li><a href="http://kotobank.jp/word/%E8%B1%A1%E9%99%90" target="_blank">象限 とは - コトバンク</a></li>
+    </ul>
+  </div>
   <script type="text/javascript">
   $(function(){
     setupLabel();
