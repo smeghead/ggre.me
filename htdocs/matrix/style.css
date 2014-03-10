@@ -97,7 +97,7 @@ span.color-area {
 div.result-block div.nav-actions div {
 	margin: 10px;
 }
-div.result-block div.nav-actions input#create-url {
+div.result-block div.nav-actions input[type=submit] {
 	margin: 30px;
 	padding: 10px 30px;
 }

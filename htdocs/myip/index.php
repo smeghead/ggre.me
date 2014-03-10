@@ -84,6 +84,15 @@ $.get('http://ggre.me/myip/index.php/myip.text', null, function(data){
       </script>
       <input type="button" id="btn-text" value="TEXT形式で自分のIPアドレスを取得する">
 
+      <h2>LINKS</h2>
+      <div class="links">
+        <ul>
+          <li><a href="http://ja.wikipedia.org/wiki/IP%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" target="_blank">IPアドレス - Wikipedia</a></li>
+          <li><a href="http://www.ugtop.com/spill.shtml" target="_blank">確認くん(VIA the UGTOP)</a></li>
+          <li><a href="http://www.showtem.com/ip-address" target="_blank">自分のIPアドレスの調べ方</a></li>
+          <li><a href="http://qiita.com/sharow/items/66d89136180884a2f7b7" target="_blank">Linux - 自分のIPアドレスを知る方法 - Qiita</a></li>
+        </ul>
+      </div>
     </div>
 <script type="text/javascript">
 $(function(){

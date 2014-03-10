@@ -106,6 +106,16 @@ $.get('http://ggre.me/password/index.php/generate.text', function(data){
       });
       </script>
       <input type="button" id="btn-text" value="TEXT形式で生成したパスワードを取得する">
+
+      <h2>LINKS</h2>
+      <div class="links">
+        <ul>
+          <li><a href="http://ja.wikipedia.org/wiki/%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89" target="_blank">パスワード - Wikipedia</a></li>
+          <li><a href="http://www.graviness.com/temp/pw_creator/" target="_blank">パスワード自動生成 (Automated Password Generator)</a></li>
+          <li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/889mkpasswd2.html" target="_blank">任意の文字数でパスワードをランダム生成するには － ＠IT</a></li>
+          <li><a href="http://www.microsoft.com/ja-jp/security/online-privacy/passwords-create.aspx" target="_blank">パスワードの変更 | 安全性の高いパスワードの作成 | Microsoft セキュリティ</a></li>
+        </ul>
+      </div>
     </div>
 <script type="text/javascript">
 $(function(){
