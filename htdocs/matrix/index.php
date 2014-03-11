@@ -4,6 +4,14 @@ ini_set('error_reporting', E_ALL);
 $api_url = 'https://www.googleapis.com/urlshortener/v1/url';
 $api_key = 'AIzaSyDgZ2Ynx9zb1JlaUybehiBYcmMOZ1dW7hE';
 
+$fonts = array(
+  'deco-maru-font-s' => 'まる字',
+  'deco-r10-win' => 'JTCウインR10', 
+  'deco-edo-win' => 'JTC江戸文字「風雲」', 
+  'deco-z10-win' => 'JTCウインZ10', 
+  'deco-uta-win' => 'JTC淡斎古印体「歌」',
+);
+
 function compress_url($url) {
   global $api_url, $api_key;
   $curl = curl_init("$api_url?key=$api_key");
@@ -92,7 +100,7 @@ function v($name, $default) {
 }
 
 $title = v('title', '');
-$font = v('font', 'deco-maru-font');
+$font = v('font', 'deco-maru-font-s');
 $theme = v('theme', '#69c');
 $label_x = v('label-x', '裕福');
 $label__x = v('label--x', '貧乏');
@@ -179,9 +187,14 @@ $util->output_header(array(
     <input id="title" type="text" value="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>" placeholder="グラフのタイトルを入力してください。" />
   </div>
   <div class="font-block">
-    <input id="font-normal" type="radio" name="font" value="" <?php if ($font == '') { echo 'checked="checked"'; } ?> /><label for="font-normal" class="">普通</label>
-    <input id="font-deco-maru-font" type="radio" name="font" value="deco-maru-font" <?php if ($font == 'deco-maru-font') { echo 'checked="checked"'; } ?> /><label for="font-deco-maru-font" class="deco-maru-font">まる字</label>
-    <input id="font-deco-TanukiPM" type="radio" name="font" value="deco-TanukiPM" <?php if ($font == 'deco-TanukiPM') { echo 'checked="checked"'; } ?> /><label for="font-deco-TanukiPM" class="deco-TanukiPM">たぬき油性マジック</label>
+    <div>
+      <input id="font-normal" type="radio" name="font" value="" <?php if ($font == '') { echo 'checked="checked"'; } ?> /><label for="font-normal" class="">フォントを選択する</label>
+    </div>
+<?php foreach ($fonts as $key => $name) { ?>
+    <div>
+      <input id="font-<?php echo $key; ?>" type="radio" name="font" value="<?php echo $key; ?>" <?php if ($font == $key) { echo 'checked="checked"'; } ?> /><label for="font-<?php echo $key; ?>" class="<?php echo $key; ?>" title="<?php echo $name; ?>">フォントを選択する</label>
+    </div>
+<?php } ?>
   </div>
   <div class="color-block">
     <input id="theme-blue" type="radio" name="theme" value="#69c" <?php if ($theme == '#69c') { echo 'checked="checked"'; } ?> /><label for="theme-blue" class=""><span class="color-area" style="background-color: #69c;">&nbsp;</a></label>
@@ -305,7 +318,10 @@ $util->output_header(array(
     if (!font) {
       font = $('input[name=font]:checked').val();
     }
-    $('.matrix-block').removeClass('deco-TanukiPM').removeClass('deco-maru-font')
+    $('.matrix-block')
+<?php foreach ($fonts as $key => $name) { ?>
+      .removeClass('<?php echo $key; ?>')
+<?php } ?>
       .css('font-family', "'Lucida Grande', Meiryo, sans-serif")
       .addClass(font);
     DecoMoji.load()
