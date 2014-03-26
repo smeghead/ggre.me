@@ -74,7 +74,6 @@ table.matrix td {
 	height: 50%;
 	border: 1px solid #333;
 	text-align: center;
-/*        font-weight: bold;*/
 	font-size: 15pt;
 }
 table.matrix .cluster {
@@ -88,6 +87,16 @@ div.result-block div.nav-actions {
 }
 div.font-block {
 	font-size: 15pt;
+}
+div.font-block input[name=font] {
+	display: none;
+}
+div.font-block input[name=font] + label {
+	padding: 5px;
+	border-radius: 5px;
+}
+div.font-block input[name=font]:checked + label {
+	background-color: #ccc;
 }
 span.color-area {
 	width: 25px; 

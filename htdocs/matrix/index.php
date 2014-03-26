@@ -116,12 +116,21 @@ require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => isEdit() ? '四象限マトリクスジェネレーター' : $title,
-  'description' => '四象限マトリクスのグラフを生成します。',
-  'keywords' => '四象限,マトリクス,グラフ',
+  'title' => (isEdit() ? '' : $title . ' | ') . '四象限マトリクスジェネレーター',
+  'description' => '四象限マトリクスを生成します。',
+  'keywords' => '四象限,マトリクス',
   'css' => '/matrix/style.css'
 ));
 ?>
+    <!-- facebook -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=807993512562818";
+          fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <!-- webfont -->
     <script type="text/javascript" src="http://site.decomoji.jp/js/aKv4T.js" charset="utf-8"></script>
 
@@ -129,14 +138,22 @@ $util->output_header(array(
       <img id="logo" src="matrix.png" alt="logo"/>
 <?php if (isEdit()) { ?>
       <h1>四象限マトリクスジェネレーター</h1>
-      <div class="description">
-        四象限マトリクスのグラフを生成します。
-      </div>
-      <div class="description">
-        グラフの中の変更したい文字をクリックして下さい。
-      </div>
 <?php } else { ?>
       <h1><?php echo htmlspecialchars($title, ENT_QUOTES); ?></h1>
+<?php } ?>
+<div class="social-buttons no-iframe">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ggre.me/matrix/" data-via="ggre_me" data-lang="ja">ツイート</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <a href="http://b.hatena.ne.jp/entry/http://ggre.me/matrix/" class="hatena-bookmark-button" data-hatena-bookmark-title="&gt;四象限マトリクスジェネレーター" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <div class="fb-like" data-href="http://ggre.me/matrix/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+</div>
+<?php if (isEdit()) { ?>
+      <div class="description">
+        四象限マトリクスを生成します。
+      </div>
+      <div class="description">
+        図の中の変更したい文字をクリックして下さい。
+      </div>
 <?php } ?>
       <div class="result-block">
         <div class="matrix-block">
@@ -152,7 +169,7 @@ $util->output_header(array(
           <span class="label label--y" title="<?php echo htmlspecialchars($label__y, ENT_QUOTES); ?>">
             <?php echo htmlspecialchars($label__y, ENT_QUOTES); ?>
           </span>
-            <span class="url"><a href="<?php echo $shortUrl; ?>"><?php echo str_replace('http://', '', $shortUrl); ?></a></span>
+          <span class="url"><a href="<?php echo $shortUrl; ?>" target="_blank"><?php echo str_replace('http://', '', $shortUrl); ?></a></span>
           <table class="matrix">
             <tr>
               <td>
@@ -254,13 +271,19 @@ $util->output_header(array(
     });
   });
   </script>
+  <h2 class="">サンプル</h2>
+  <div class="samples">
+    <iframe src="http://t.co/ZxtpMy6wm8" style="width: 360px; height: 280px; border:none;"></iframe>
+    <iframe src="http://t.co/tLefvRiemR" style="width: 360px; height: 280px; border:none;"></iframe>
+    <iframe src="http://t.co/w0iAyeor44" style="width: 360px; height: 280px; border:none;"></iframe>
+  </div>
 <?php } else { ?>
-  <div>
+  <div class="no-iframe">
     <h3 id="sample">ブログパーツ</h3>
     作成した四象限マトリクスのグラフを、ブログなどに貼り付けることができます。
     以下のタグをブログに貼り付けて下さい。
     <pre class="prettyprint">
-      &lt;iframe src="<?php echo $shortUrl; ?>" style="width: 530px; height: 500px;"&gt;&lt;/iframe&gt;
+      &lt;iframe src="<?php echo $shortUrl; ?>" style="width: 360px; height: 280px; border:none;"&gt;&lt;/iframe&gt;
     </pre>
 
     <hr/>
@@ -270,13 +293,15 @@ $util->output_header(array(
     //iframe中に表示されている場合は、nav-actionを表示しない。
     if (window != parent) {
       $('.nav-actions').hide();
-      $('footer').hide();
+      $('header, footer').hide();
+      $('.no-iframe').hide();
+      $('h1').css('font-size', '15pt');
     }
   });
   </script>
 <?php } ?>
-  <h2>LINKS</h2>
-  <div class="links">
+  <h2 class="no-iframe">LINKS</h2>
+  <div class="links no-iframe">
     <ul>
       <li><a href="http://www.higuchi.com/item/672" target="_blank">コンサル風４象限マトリクスチャートにはだまされないぞ [困ったプレゼン] - higuchi.com blog</a></li>
       <li><a href="https://www.google.co.jp/search?num=100&espv=210&es_sm=93&q=%E5%9B%9B%E8%B1%A1%E9%99%90%E3%83%9E%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9&oq=%E5%9B%9B%E8%B1%A1%E9%99%90%E3%83%9E%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9&gs_l=serp.3..0.1909.1909.0.2027.1.1.0.0.0.0.96.96.1.1.0....0...1c.1.37.serp..0.1.96.3rKts0rqnoo" target="_blank">四象限マトリクス - Google 検索</a></li>
@@ -318,6 +343,9 @@ $util->output_header(array(
     if (!font) {
       font = $('input[name=font]:checked').val();
     }
+//console.log($('input[name=font]:checked'));
+//    $('input[name=font]').next().css('background-color', '#fff');
+//    $('input[name=font]:checked').next().css('background-color', '#ddd');
     $('.matrix-block')
 <?php foreach ($fonts as $key => $name) { ?>
       .removeClass('<?php echo $key; ?>')

@@ -46,24 +46,23 @@ class Template {
 <script>
     $(function(){
       prettyPrint();
-      console.log('end');
     });
-</script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- ggre.me -->
-<ins class="adsbygoogle"
- style="display:block"
- data-ad-client="ca-pub-6994803411870749"
- data-ad-slot="4317119598"
- data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
 <footer>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- ggre.me -->
+  <ins class="adsbygoogle"
+   style="display:block"
+   data-ad-client="ca-pub-6994803411870749"
+   data-ad-slot="4317119598"
+   data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
   <hr>
   <div class="copyright">
-    &copy; <a href="http://twitter.com/smeghead" target="_blank">@smeghead</a>
+    &copy; <a href="http://twitter.com/ggre_me" target="_blank">@ggre_me</a>
   </div>
 </footer>
 

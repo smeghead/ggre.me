@@ -72,3 +72,6 @@ div.copyright {
 	text-align: right;
 	margin-right: 10px;
 }
+.prettyprint {
+	overflow:scroll;
+}
