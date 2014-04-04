@@ -136,16 +136,18 @@ $util->output_header(array(
 
     <div class="content">
       <img id="logo" src="matrix.png" alt="logo"/>
-<?php if (isEdit()) { ?>
-      <h1>四象限マトリクスジェネレーター</h1>
-<?php } else { ?>
-      <h1><?php echo htmlspecialchars($title, ENT_QUOTES); ?></h1>
-<?php } ?>
+<?php
+if (isEdit()) {
+  $page_title = '四象限マトリクスジェネレーター';
+} else {
+  $page_title = htmlspecialchars($title . ' | 四象限マトリクスジェネレーター', ENT_QUOTES);
+} ?>
+      <h1><?php echo htmlspecialchars($page_title, ENT_QUOTES); ?></h1>
 <div class="social-buttons no-iframe">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ggre.me/matrix/" data-via="ggre_me" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://g<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" data-via="ggre_me" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  <a href="http://b.hatena.ne.jp/entry/http://ggre.me/matrix/" class="hatena-bookmark-button" data-hatena-bookmark-title="&gt;四象限マトリクスジェネレーター" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-  <div class="fb-like" data-href="http://ggre.me/matrix/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+  <a href="http://b.hatena.ne.jp/entry/http://<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" class="hatena-bookmark-button" data-hatena-bookmark-title="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <div class="fb-like" data-href="http://<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 </div>
 <?php if (isEdit()) { ?>
       <div class="description">
