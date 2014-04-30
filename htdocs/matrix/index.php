@@ -140,7 +140,7 @@ $util->output_header(array(
 if (isEdit()) {
   $page_title = '四象限マトリクスジェネレーター';
 } else {
-  $page_title = htmlspecialchars($title . ' | 四象限マトリクスジェネレーター', ENT_QUOTES);
+  $page_title = htmlspecialchars($title, ENT_QUOTES);
 } ?>
       <h1><?php echo htmlspecialchars($page_title, ENT_QUOTES); ?></h1>
 <div class="social-buttons no-iframe">
