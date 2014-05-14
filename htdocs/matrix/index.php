@@ -6,10 +6,7 @@ $api_key = 'AIzaSyDgZ2Ynx9zb1JlaUybehiBYcmMOZ1dW7hE';
 
 $fonts = array(
   'deco-maru-font-s' => 'まる字',
-  'deco-r10-win' => 'JTCウインR10', 
-  'deco-edo-win' => 'JTC江戸文字「風雲」', 
-  'deco-z10-win' => 'JTCウインZ10', 
-  'deco-uta-win' => 'JTC淡斎古印体「歌」',
+  'deco-TanukiPM' => 'たぬき油性マジック', 
 );
 
 function compress_url($url) {
@@ -101,7 +98,7 @@ function v($name, $default) {
 
 $title = v('title', '');
 $font = v('font', 'deco-maru-font-s');
-$theme = v('theme', '#69c');
+$theme = v('theme', '#ffff93');
 $label_x = v('label-x', '裕福');
 $label__x = v('label--x', '貧乏');
 $label_y = v('label-y', '忙しい');
@@ -216,12 +213,12 @@ if (isEdit()) {
 <?php } ?>
   </div>
   <div class="color-block">
+    <input id="theme-yellow" type="radio" name="theme" value="#ffff93" <?php if ($theme == '#ffff93') { echo 'checked="checked"'; } ?> /><label for="theme-yellow" class=""><span class="color-area" style="background-color: #ffff93;">&nbsp;</a></label>
     <input id="theme-blue" type="radio" name="theme" value="#69c" <?php if ($theme == '#69c') { echo 'checked="checked"'; } ?> /><label for="theme-blue" class=""><span class="color-area" style="background-color: #69c;">&nbsp;</a></label>
     <input id="theme-red" type="radio" name="theme" value="#ff7f7f" <?php if ($theme == '#ff7f7f') { echo 'checked="checked"'; } ?> /><label for="theme-red" class=""><span class="color-area" style="background-color: #ff7f7f;">&nbsp;</a></label>
     <input id="theme-black" type="radio" name="theme" value="#999" <?php if ($theme == '#999') { echo 'checked="checked"'; } ?> /><label for="theme-black" class=""><span class="color-area" style="background-color: #999;">&nbsp;</a></label>
     <input id="theme-green" type="radio" name="theme" value="#CCFF99" <?php if ($theme == '#CCFF99') { echo 'checked="checked"'; } ?> /><label for="theme-green" class=""><span class="color-area" style="background-color: #CCFF99;">&nbsp;</a></label>
     <input id="theme-pink" type="radio" name="theme" value="#FF99CC" <?php if ($theme == '#FF99CC') { echo 'checked="checked"'; } ?> /><label for="theme-pink" class=""><span class="color-area" style="background-color: #FF99CC;">&nbsp;</a></label>
-    <input id="theme-yellow" type="radio" name="theme" value="#ffff93" <?php if ($theme == '#ffff93') { echo 'checked="checked"'; } ?> /><label for="theme-yellow" class=""><span class="color-area" style="background-color: #ffff93;">&nbsp;</a></label>
   </div>
   <div>
     <input type="submit" value="四象限マトリクスを生成する" />
