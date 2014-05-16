@@ -164,6 +164,7 @@ $util->output_header(array(
         <ul>
           <li><a href="http://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC" target="_blank">カレンダー - Wikipedia</a></li>
           <li><a href="http://www.benri.com/calendar/" target="_blank">「便利コム」カレンダー(祝日・六曜付き)</a></li>
+          <li><a href="http://s-proj.com/utils/holiday.html" target="_blank">国民の祝日チェック 祝日判定web API</a></li>
         </ul>
       </div>
     </div>
