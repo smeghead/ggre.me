@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => 'ggre.me',
+  'title' => 'peakytools.info',
   'description' => 'このサイトは、小さいツールやAPIを集めたサイトです。',
   'keywords' => 'カレンダー,パスワード,バーコード,BASIC認証'
 ));

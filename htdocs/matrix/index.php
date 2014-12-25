@@ -52,13 +52,13 @@ if ($pathinfo) {
     //強制的にパラメータを上書きする。
     $_REQUEST[$k] = $v;
   }
-  $shortUrl = 'http://ggre.me/matrix' . $pathinfo;
+  $shortUrl = 'http://peakytools.info/matrix' . $pathinfo;
 } else {
   if (!isEdit()) {
     $myUrl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];;
     $sUrl = compress_url($myUrl);
     preg_match('/\/([0-9a-zA-Z]+)$/', $sUrl, $matches);
-    $redirectUrl = 'http://ggre.me/matrix/' . $matches[1];
+    $redirectUrl = 'http://peakytools.info/matrix/' . $matches[1];
     header('Location: ' . $redirectUrl);
     exit();
   }

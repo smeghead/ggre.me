@@ -31,7 +31,7 @@ class Template {
       <div class="main-menu">
         <ul>
           <li>
-            <a href="/">ggre.me</a>
+            <a href="/">peakytools.info</a>
           </li>
         </ul>
       </div>
@@ -51,7 +51,7 @@ class Template {
 
 <footer>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- ggre.me -->
+  <!-- peakytools.info -->
   <ins class="adsbygoogle"
    style="display:block"
    data-ad-client="ca-pub-6994803411870749"

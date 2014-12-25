@@ -18,7 +18,7 @@ require_once(dirname(__FILE__) . '/../../lib/util.php');
 use util;
 $util = new util\Template();
 $util->output_header(array(
-  'title' => '自分のIPアドレス API',
+  'title' => '自分のIPアドレス取得 API',
   'description' => '自分のアクセス元IPアドレスを表示します。自分のIPアドレスを取得できるAPIの使い方も記載してます。',
   'keywords' => '自分のIPアドレス,IPアドレス取得API,自分のIP,ip 調べ方, ipの調べ方,自分のipアドレスの調べ方, 自分のアドレスの調べ方, グローバルアドレス 調べ方, 携帯ipアドレス 調べ方, パソコンのipアドレスの調べ方, パソコン アドレス 調べ方,パソコン ipアドレス 調べ方,remote address',
   'css' => '/myip/style.css'
@@ -34,7 +34,7 @@ $util->output_header(array(
           fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     <div class="content">
-      <h1>自分のIPアドレス</h1>
+      <h1>自分のIPアドレス取得</h1>
       <div class="social-buttons no-iframe">
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" data-via="ggre_me" data-lang="ja">ツイート</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
@@ -61,17 +61,17 @@ $util->output_header(array(
       <h3>自分のIPアドレスを取得するAPI</h3>
       <div class="description">
         JavaScript(jQuery)から利用する場合の例です。
-        http://ggre.me/myip/index.php/myip.json にアクセスすると、json形式でIPアドレスを取得できます。
+        http://peakytools.info/myip/index.php/myip.json にアクセスすると、json形式でIPアドレスを取得できます。
       </div>
       <pre class="prettyprint">
-$.getJSON('http://ggre.me/myip/index.php/myip.json', function(data){
+$.getJSON('http://peakytools.info/myip/index.php/myip.json', function(data){
   alert(JSON.stringify(data));
 });
       </pre>
       <script>
       $(function(){
         $('#btn-json').on('click', function(){
-          $.getJSON('http://ggre.me/myip/index.php/myip.json', function(data){
+          $.getJSON('http://peakytools.info/myip/index.php/myip.json', function(data){
             alert(JSON.stringify(data));
           });
         });
@@ -81,17 +81,17 @@ $.getJSON('http://ggre.me/myip/index.php/myip.json', function(data){
 
       <div class="description">
         JavaScript(jQuery)から利用する場合の例です。
-        http://ggre.me/myip/index.php/myip.text にアクセスすると、text形式でIPアドレスを取得できます。
+        http://peakytools.info/myip/index.php/myip.text にアクセスすると、text形式でIPアドレスを取得できます。
       </div>
       <pre class="prettyprint">
-$.get('http://ggre.me/myip/index.php/myip.text', null, function(data){
+$.get('http://peakytools.info/myip/index.php/myip.text', null, function(data){
   alert(data);
 }, 'text');
       </pre>
       <script>
       $(function(){
         $('#btn-text').on('click', function(){
-          $.get('http://ggre.me/myip/index.php/myip.text', null, function(data){
+          $.get('http://peakytools.info/myip/index.php/myip.text', null, function(data){
             alert(data);
           }, 'text');
         });

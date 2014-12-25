@@ -1,0 +1,8 @@
+div.result-block div {
+	margin: 20px;
+}
+div.result-block span.result {
+	padding: 10px;
+	background-color: #eee;
+	font-size: 25pt;
+}

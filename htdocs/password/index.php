@@ -84,17 +84,17 @@ $util->output_header(array(
       <h3>APIによるパスワード取得方法</h3>
       <div class="description">
         JavaScript(jQuery)から利用する場合の例です。
-        http://ggre.me/password/index.php/generate.json にアクセスすると、生成したパスワードをjson形式で取得できます。
+        http://peakytools.info/password/index.php/generate.json にアクセスすると、生成したパスワードをjson形式で取得できます。
       </div>
       <pre class="prettyprint">
-$.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
+$.getJSON('http://peakytools.info/password/index.php/generate.json', function(data){
   alert(JSON.stringify(data));
 });
       </pre>
       <script>
       $(function(){
         $('#btn-json').on('click', function(){
-          $.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
+          $.getJSON('http://peakytools.info/password/index.php/generate.json', function(data){
             alert(JSON.stringify(data));
           });
         });
@@ -104,17 +104,17 @@ $.getJSON('http://ggre.me/password/index.php/generate.json', function(data){
 
       <div class="description">
         JavaScript(jQuery)から利用する場合の例です。
-        http://ggre.me/password/index.php/generate.text にアクセスすると、生成したパスワードをtext形式で取得できます。
+        http://peakytools.info/password/index.php/generate.text にアクセスすると、生成したパスワードをtext形式で取得できます。
       </div>
       <pre class="prettyprint">
-$.get('http://ggre.me/password/index.php/generate.text', function(data){
+$.get('http://peakytools.info/password/index.php/generate.text', function(data){
   alert(data);
 }, 'text');
       </pre>
       <script>
       $(function(){
         $('#btn-text').on('click', function(){
-          $.get('http://ggre.me/password/index.php/generate.text', function(data){
+          $.get('http://peakytools.info/password/index.php/generate.text', function(data){
             alert(data);
           }, 'text');
         });
