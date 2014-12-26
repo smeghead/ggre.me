@@ -270,12 +270,14 @@ if (isEdit()) {
     });
   });
   </script>
+<!--
   <h2 class="">サンプル</h2>
   <div class="samples">
     <iframe src="http://t.co/ZxtpMy6wm8" style="width: 360px; height: 280px; border:none;"></iframe>
     <iframe src="http://t.co/tLefvRiemR" style="width: 360px; height: 280px; border:none;"></iframe>
     <iframe src="http://t.co/w0iAyeor44" style="width: 360px; height: 280px; border:none;"></iframe>
   </div>
+-->
 <?php } else { ?>
   <div class="no-iframe">
     <h3 id="sample">ブログパーツ</h3>

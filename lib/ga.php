@@ -10,7 +10,7 @@ class GoogleAnalyticsTag {
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-46701969-1', 'ggre.me');
+  ga('create', 'UA-46701969-1', 'peakytools.info');
   ga('send', 'pageview');
 </script>
     <?php
